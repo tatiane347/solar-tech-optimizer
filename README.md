@@ -39,4 +39,19 @@ https://github.com/tatiane347
 WhatsApp Direto: Clique aqui para conversar 📞📱
 Converse com Tatiane Souza/Dev & Business no WhatsApp: https://wa.me/5511910526709
 
+1 <img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-37-36 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/b6693eb7-741c-48ac-9762-89d77d57599f" />
+
+2 <img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-38-13 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/d3513f87-6d0e-429a-a84f-5c51e1811233" />
+
+3 <img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-38-45 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/6d203715-3586-46c5-8daa-68f094e4488e" />
+
+4 <img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-39-19 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/f1fba3b1-c7fc-4db8-a653-39c81c85f34a" />
+
+5 <img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-39-46 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/c32d96e9-e605-4754-af4b-011df21415d6" />
+
+6<img width="1024" height="514" alt="Screenshot 2026-01-19 at 07-40-06 Energia Solar Economia e Sustentabilidade" src="https://github.com/user-attachments/assets/bf8f3f7d-7d0d-4216-8294-524ae07d4927" />
+
+
+
+
 Transformando código em soluções de negócio.
