@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulador de Economia Solar - Desenvolvido por Tatiane Nascimento. Reduza sua conta de luz em até 95%.">
+    <meta name="author" content="Tatiane Nascimento De Souza">
+    
+    <!-- Open Graph (Para redes sociais) -->
+    <meta property="og:title" content="Energia Solar - Economia Real">
+    <meta property="og:description" content="Descubra quanto você pode economizar com energia solar hoje.">
+    <meta property="og:type" content="website">
+
+    <title>Energia Solar | Economia e Sustentabilidade</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/548/548427.png">
+
+    <!-- Bootstrap 5.3 & Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Animate On Scroll (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #ffc107;
+            --primary-dark: #e0a800;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --success: #10b981;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            color: var(--dark);
+            background-color: white;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1509391366360-fe5bb58583bb?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 0 120px;
+            color: white;
+        }
+
+        /* Glassmorphism Card */
+        .calc-card {
+            background: white;
+            border-radius: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Inputs & Buttons */
+        .input-custom {
+            border-radius: 15px;
+            padding: 15px 20px;
+            border: 2px solid #f1f5f9;
+            transition: 0.3s;
+        }
+
+        .input-custom:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.1);
+        }
+
+        .btn-main {
+            background: var(--primary);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 15px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+        }
+
+        /* Feature Cards */
+        .feature-box {
+            padding: 40px;
+            border-radius: 20px;
+            background: var(--light);
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            background: white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            border-left: 4px solid var(--primary);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 60px 0 30px;
+        }
+
+        /* Typography */
+        .text-gradient {
+            background: linear-gradient(to right, #ffc107, #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-800 fs-4 d-flex align-items-center gap-2" href="#">
+                <i data-lucide="sun" class="text-warning"></i>
+                <span class="fw-bold">SOLAR TECH</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3">
+                    <li class="nav-item"><a class="nav-link fw-600" href="#simulador">Simulador</a></li>
+                    <li class="nav-item"><a class="nav-link fw-600" href="#beneficios">Benefícios</a></li>
+                    <li class="nav-item"><a class="nav-link fw-600" href="#sobre">Especialista</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero text-center">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-3 fw-800 mb-4">Economize com a <span class="text-gradient">Força do Sol</span></h1>
+            <p class="lead mb-0 opacity-75 mx-auto" style="max-width: 800px;">
+                Projetos inteligentes de energia fotovoltaica para residências e empresas. 
+                Sustentabilidade que gera lucro real no seu bolso.
+            </p>
+        </div>
+    </header>
+
+    <!-- Simulator Section -->
+    <section id="simulador" class="container pb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8">
+                <div class="calc-card p-4 p-md-5" data-aos="zoom-in">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-2">Simulador de Investimento</h2>
+                        <p class="text-muted">Descubra sua economia estimada em segundos</p>
+                    </div>
+
+                    <div class="row g-4 align-items-end">
+                        <div class="col-md-8">
+                            <label class="form-label fw-600 mb-3">Qual o valor médio da sua conta de luz mensal?</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0">R$</span>
+                                <input type="number" id="valorConta" class="form-control input-custom border-start-0" placeholder="Ex: 450,00">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button onclick="calcularEconomia()" class="btn btn-main w-100 d-flex align-items-center justify-content-center gap-2">
+                                <i data-lucide="zap" size="20"></i> CALCULAR
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="resultado" class="mt-5 d-none">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="p-3 text-center bg-light rounded-4">
+                                    <small class="text-uppercase fw-bold text-muted d-block mb-1">Economia/Mês</small>
+                                    <h3 class="fw-800 text-success mb-0" id="resMensal">-</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 text-center bg-light rounded-4">
+                                    <small class="text-uppercase fw-bold text-muted d-block mb-1">Economia/Ano</small>
+                                    <h3 class="fw-800 text-success mb-0" id="resAnual">-</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 text-center bg-light rounded-4">
+                                    <small class="text-uppercase fw-bold text-muted d-block mb-1">Em 25 Anos</small>
+                                    <h3 class="fw-800 text-success mb-0" id="resVinteCinco">-</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="beneficios" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="fw-800">Por que investir agora?</h2>
+                <div class="mx-auto bg-warning mb-4" style="height: 4px; width: 60px;"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box">
+                        <i data-lucide="trending-up" class="text-warning mb-3" size="32"></i>
+                        <h4 class="fw-bold">Valorização</h4>
+                        <p class="text-muted mb-0">Imóveis com sistema solar próprio são vendidos até 20% mais rápido e por valores maiores.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box">
+                        <i data-lucide="shield" class="text-warning mb-3" size="32"></i>
+                        <h4 class="fw-bold">Independência</h4>
+                        <p class="text-muted mb-0">Fique livre dos aumentos constantes das tarifas de energia e das bandeiras tarifárias.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box">
+                        <i data-lucide="sun-medium" class="text-warning mb-3" size="32"></i>
+                        <h4 class="fw-bold">Energia Limpa</h4>
+                        <p class="text-muted mb-0">Redução imediata na emissão de CO2. Uma escolha consciente para o futuro do planeta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialist Section -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="taty.jpg" alt="Tatiane Nascimento" class="img-fluid rounded-5 shadow-lg">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h5 class="text-warning fw-bold text-uppercase">Desenvolvedora do Projeto</h5>
+                    <h2 class="display-5 fw-800 mb-4">Tatiane Nascimento De Souza</h2>
+                    <p class="lead text-muted mb-4">
+                        Especialista em criar soluções digitais que conectam tecnologia e economia real. Este projeto foi concebido para facilitar a entrada de novos clientes no mercado de energia limpa através de uma interface intuitiva e profissional.
+                    </p>
+                    <div class="row g-4 mb-5">
+                        <div class="col-6">
+                            <h3 class="fw-bold mb-0">Freelancer</h3>
+                            <p class="text-muted mb-0">Disponível para Projetos</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="fw-bold mb-0">Tech Expert</h3>
+                            <p class="text-muted mb-0">UI/UX & Web Dev</p>
+                        </div>
+                    </div>
+                    <a href="https://cutt.ly/5tdDEIFH" class="btn btn-dark btn-lg px-5 py-3 rounded-pill">Ver Currículo Completo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <h4 class="text-white fw-bold mb-4">Solar Tech</h4>
+                    <p>Liderando a transição energética através de tecnologia e inovação digital.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="text-white fw-bold mb-4">Links Rápidos</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-reset">Home</a></li>
+                        <li><a href="#simulador" class="text-decoration-none text-reset">Simulador</a></li>
+                        <li><a href="#sobre" class="text-decoration-none text-reset">Especialista</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="text-white fw-bold mb-4">Contato Profissional</h4>
+                    <p>Email: tatianen25@gmail.com</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://www.linkedin.com/in/tatiane-nascimento-68b0622bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="text-white"><i data-lucide="linkedin"></i></a>
+                        <a href="https://github.com/tatiane347" class="text-white"><i data-lucide="github"></i></a>
+                        <a href="https://www.instagram.com/tatianesouza.assessoria?igsh=MWRwbjUxYnE1MWI4aQ==" class="text-white"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center pt-3">
+                <p class="small mb-0">Desenvolvido com ❤️ por Tatiane Nascimento De Souza</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact -->
+    <a href="https://wa.me/5511910526709" class="whatsapp-btn" target="_blank">
+        <i data-lucide="message-square"></i>
+        <span>Falar com Tatiane</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar Icones e Animações
+        lucide.createIcons();
+        AOS.init({ duration: 1000, once: true });
+
+        function calcularEconomia() {
+            const val = parseFloat(document.getElementById('valorConta').value);
+            const res = document.getElementById('resultado');
+
+            if (val > 0) {
+                const mensal = val * 0.95;
+                const anual = mensal * 12;
+                const v5 = anual * 25;
+
+                const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+                document.getElementById('resMensal').innerText = fmt.format(mensal);
+                document.getElementById('resAnual').innerText = fmt.format(anual);
+                document.getElementById('resVinteCinco').innerText = fmt.format(v5);
+
+                res.classList.remove('d-none');
+                res.style.animation = 'fadeInUp 0.6s ease forwards';
+            }
+        }
+    </script>
+</body>
+</html>
